@@ -1,0 +1,38 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'weather-station'      
+      MYSQL_USER: 'pziogas'     
+      MYSQL_PASSWORD: 'test1234!'      
+      MYSQL_ROOT_PASSWORD: 'test1234!'
+      TZ: "Europe/Athens"
+    networks:
+      - dev-network
+    ports:      
+      - '3306:3306'
+    expose: 
+      - '3306'     
+    volumes:
+      - weather-station:/var/lib/mysql
+  web:
+     image: quarkus/weatherstationv2
+     restart: always
+     environment:
+        quarkus.datasource.url : jdbc:mysql://db:3306/weather-station?useSSL=false
+        quarkus.http.port : 8080
+        TZ: "Europe/Athens"
+     networks:
+      - dev-network
+     ports:     
+      - '8080:8080'
+     expose:      
+      - '8080' 
+     depends_on: [db]     
+volumes:
+  weather-station:
+networks:
+  dev-network:
+    
