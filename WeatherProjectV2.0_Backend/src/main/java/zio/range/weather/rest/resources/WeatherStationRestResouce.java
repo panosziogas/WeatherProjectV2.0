@@ -14,6 +14,8 @@ import javax.ws.rs.core.Response;
 import zio.range.weather.rest.resources.controllers.WeatherStationRestController;
 import zio.range.weather.rest.resources.dtos.APIResponseEnvelope;
 import zio.range.weather.rest.resources.dtos.WeatherDataDTO;
+import zio.range.weather.rest.resources.dtos.WeatherDataSearchFilter;
+import zio.range.weather.rest.resources.dtos.WeatherDataSearchResult;
 
 @Path("/weather-station")
 @RequestScoped
@@ -53,6 +55,30 @@ public class WeatherStationRestResouce {
         responseEnvelope.setPayload(weatherData);
         responseEnvelope.setSuccess(true);
         responseEnvelope.addMessage("Succefully added data.");
+        return Response.status(Response.Status.OK).entity(responseEnvelope).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("search")
+    public Response searchWeatherData(WeatherDataSearchFilter dataSearch) {
+        if (dataSearch == null) {
+            LOG.severe("No search data provided");
+            APIResponseEnvelope responseEnvelope = new APIResponseEnvelope();
+            responseEnvelope.setPayload(dataSearch);
+            responseEnvelope.setSuccess(false);
+            responseEnvelope.addMessage("Failed to search for data.");
+            responseEnvelope.addMessage("No search payload was provided.");
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity(responseEnvelope)
+                    .build();
+        }
+        WeatherDataSearchResult results = weatherStationRestController.searchWeatherData(dataSearch);
+        APIResponseEnvelope responseEnvelope = new APIResponseEnvelope();
+        responseEnvelope.setPayload(results);
+        responseEnvelope.setSuccess(true);
         return Response.status(Response.Status.OK).entity(responseEnvelope).build();
     }
 

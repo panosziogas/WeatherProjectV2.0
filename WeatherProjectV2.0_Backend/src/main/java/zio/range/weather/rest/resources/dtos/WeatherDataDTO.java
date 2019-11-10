@@ -12,6 +12,17 @@ public class WeatherDataDTO  implements Serializable{
     private Integer humidity;
     private Double atmPressure;
 
+    public WeatherDataDTO() {
+    }
+    
+    
+
+    public WeatherDataDTO(Double temperature, Integer humidity, Double atmPressure) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.atmPressure = atmPressure;
+    }
+
    
 
     public Double getTemperature() {
