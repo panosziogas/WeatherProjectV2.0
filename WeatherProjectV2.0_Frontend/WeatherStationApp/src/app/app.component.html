@@ -29,7 +29,37 @@
         <div *ngFor="let pr of weatherDataResult">
           <font size="10"> {{pr.atmPressure}} mb </font>
         </div>
-      </div>
+      </div>      
+    </div>
+    <div class="chart-wrapper">
+      <canvas baseChart 
+          [datasets]="templineChartData" 
+          [labels]="lineChartLabels" 
+          [options]="lineChartOptions"
+          [colors]="lineChartColors" 
+          [legend]="lineChartLegend" 
+          [chartType]="lineChartType" 
+          [plugins]="lineChartPlugins">
+      </canvas>      
+      <canvas baseChart 
+          [datasets]="humlineChartData" 
+          [labels]="lineChartLabels" 
+          [options]="lineChartOptions"
+          [colors]="lineChartColors" 
+          [legend]="lineChartLegend" 
+          [chartType]="lineChartType" 
+          [plugins]="lineChartPlugins">
+      </canvas>
+      &nbsp;
+      <canvas baseChart 
+          [datasets]="prelineChartData" 
+          [labels]="lineChartLabels" 
+          [options]="lineChartOptions"
+          [colors]="lineChartColors" 
+          [legend]="lineChartLegend" 
+          [chartType]="lineChartType" 
+          [plugins]="lineChartPlugins">
+      </canvas>
     </div>
   </div>
 

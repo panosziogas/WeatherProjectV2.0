@@ -56,7 +56,7 @@
     padding-top: 45px;
     margin-top: 8px;
     overflow: hidden;
-    background-color: rgb(15, 15, 16);
+    background-color: rgb(184, 184, 211);
   }
 
   .terminal::before {
@@ -65,8 +65,8 @@
     top: 0;
     left: 0;
     height: 4px;
-    background: rgb(15, 15, 16);
-    color: #c2c3c4;
+    background: rgb(158, 159, 160);
+    color: #0c0e0f;
     width: 100%;
     font-size: 2rem;
     line-height: 0;
@@ -87,8 +87,8 @@
     border-radius: 6px;
     text-align: center;
     height: 200px;
-    background-color: rgb(224, 224, 230);
-    border: 2px solid rgb(173, 194, 240);
+    background-color: rgb(103, 176, 235);
+    border: 2px solid rgb(0, 0, 0);
   }
 
   .temperature_value_div {
@@ -99,9 +99,8 @@
     transform: translateY(-50%);
   }
   .temperature_header_value_div {
-    border-radius: 6px;
-    border: 2px solid rgb(173, 194, 240);
-    background-color: rgb(144, 183, 223);
+    border-radius: 6px;    
+    background-color: rgb(158, 159, 160);
   }
 
 
@@ -111,8 +110,8 @@
     border-radius: 6px;
     text-align: center;
     height: 200px;
-    background-color: rgb(224, 224, 230);
-    border: 2px solid rgb(173, 194, 240);
+    background-color: rgb(103, 176, 235);
+    border: 2px solid rgb(0, 0, 0);
   }
 
   .humidity_value_div {
@@ -124,9 +123,8 @@
   }
 
   .humidity_header_value_div {
-    border-radius: 6px;
-    border: 2px solid rgb(173, 194, 240);
-    background-color: rgb(144, 183, 223);
+    border-radius: 6px;    
+    background-color: rgb(158, 159, 160);
   }
 
   .atmpressure_div {
@@ -135,8 +133,8 @@
     border-radius: 6px;
     text-align: center;
     height: 200px;
-    background-color: rgb(224, 224, 230);
-    border: 2px solid rgb(173, 194, 240);
+    background-color: rgb(103, 176, 235);
+    border: 2px solid rgb(0, 0, 0);
   }
 
   .atmpressure_value_div {
@@ -148,9 +146,8 @@
   }
 
   .atmpressure_header_value_div {
-    border-radius: 6px;
-    border: 2px solid rgb(173, 194, 240);
-    background-color: rgb(144, 183, 223);
+    border-radius: 6px;    
+    background-color: rgb(158, 159, 160);
   }
 
   .circle-link {
