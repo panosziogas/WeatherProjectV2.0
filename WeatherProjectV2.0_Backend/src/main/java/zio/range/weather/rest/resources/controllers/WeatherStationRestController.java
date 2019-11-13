@@ -6,7 +6,6 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import zio.range.weather.data.model.WeatherData;
 import zio.range.weather.data.service.WeatherDataService;
-import zio.range.weather.rest.resources.dtos.SearchOrder;
 import zio.range.weather.rest.resources.dtos.WeatherDataDTO;
 import zio.range.weather.rest.resources.dtos.WeatherDataSearchFilter;
 import zio.range.weather.rest.resources.dtos.WeatherDataSearchResult;

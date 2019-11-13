@@ -1,0 +1,227 @@
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    height: 60px;
+    margin: -8px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .content {
+    
+    display: flex;
+    margin: 32px auto;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .terminal {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 16px;
+    padding-top: 45px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal::before {
+    content: "Live Weather Data";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(15, 15, 16);
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  .temperature_div {
+    float: left;
+    width: 25%;
+    border-radius: 6px;
+    text-align: center;
+    height: 200px;
+    background-color: rgb(224, 224, 230);
+    border: 2px solid rgb(173, 194, 240);
+  }
+
+  .temperature_value_div {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .temperature_header_value_div {
+    border-radius: 6px;
+    border: 2px solid rgb(173, 194, 240);
+    background-color: rgb(144, 183, 223);
+  }
+
+
+  .humidity_div {
+    float: left;
+    width: 50%;
+    border-radius: 6px;
+    text-align: center;
+    height: 200px;
+    background-color: rgb(224, 224, 230);
+    border: 2px solid rgb(173, 194, 240);
+  }
+
+  .humidity_value_div {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .humidity_header_value_div {
+    border-radius: 6px;
+    border: 2px solid rgb(173, 194, 240);
+    background-color: rgb(144, 183, 223);
+  }
+
+  .atmpressure_div {
+    float: right;
+    width: 25%;
+    border-radius: 6px;
+    text-align: center;
+    height: 200px;
+    background-color: rgb(224, 224, 230);
+    border: 2px solid rgb(173, 194, 240);
+  }
+
+  .atmpressure_value_div {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .atmpressure_header_value_div {
+    border-radius: 6px;
+    border: 2px solid rgb(173, 194, 240);
+    background-color: rgb(144, 183, 223);
+  }
+
+  .circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    margin: 8px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 1s ease-out;
+  }
+
+  .circle-link:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+
+  /* Responsive Styles */
+  @media screen and (max-width: 1024px) {
+
+    .card-container>*:not(.circle-link),
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }

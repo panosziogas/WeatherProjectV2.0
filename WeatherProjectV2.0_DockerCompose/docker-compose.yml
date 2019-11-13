@@ -30,7 +30,16 @@ services:
       - '8080:8080'
      expose:      
       - '8080' 
-     depends_on: [db]     
+     depends_on: [db]
+  app:
+     image: 'angular/weatherstationv2'        
+     networks:
+      - dev-network
+     ports:
+      - 4200:4200    
+     expose:      
+      - '4200'
+     depends_on: [db,web]      
 volumes:
   weather-station:
 networks:
