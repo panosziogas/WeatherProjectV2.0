@@ -1,65 +1,37 @@
 <div class="content" role="main">
 
   <div class="terminal">
+
     <div class="temperature_div">
-        <div class="temperature_header_value_div">
-          <font size ="3"> Temperature </font>
-        </div>
-      <div class="temperature_value_div">
-        <div *ngFor="let temp of weatherDataResult">
-          <font size="10"> {{temp.temperature}} °C</font>
-        </div>
-      </div>
+      <ngx-gauge [type]="gaugeType" [value]="gaugeTempValue" [label]="gaugeTempLabel" [append]="gaugeTempAppendText">
+      </ngx-gauge>
     </div>
     <div class="humidity_div">
-        <div class="humidity_header_value_div">
-            <font size ="3"> Humidity </font>
-          </div>
-      <div class="humidity_value_div">
-        <div *ngFor="let hum of weatherDataResult">
-          <font size="10"> {{hum.humidity}}% </font>
-        </div>
-      </div>
+      <ngx-gauge [type]="gaugeType" [value]="gaugeHumValue" [label]="gaugeHumLabel" [append]="gaugeHumAppendText">
+      </ngx-gauge>
     </div>
     <div class="atmpressure_div">
-        <div class="atmpressure_header_value_div">
-            <font size ="3"> Pressure </font>
-          </div>
-      <div class="atmpressure_value_div">
-        <div *ngFor="let pr of weatherDataResult">
-          <font size="10"> {{pr.atmPressure}} mb </font>
-        </div>
-      </div>      
+      <ngx-gauge [type]="gaugeType" [value]="gaugeAtmPressureValue" [label]="gaugeAtmPressureLabel"
+        [append]="gaugeAtmPressureText">
+      </ngx-gauge>
     </div>
     <div class="chart-wrapper">
-      <canvas baseChart 
-          [datasets]="templineChartData" 
-          [labels]="lineChartLabels" 
-          [options]="lineChartOptions"
-          [colors]="lineChartColors" 
-          [legend]="lineChartLegend" 
-          [chartType]="lineChartType" 
-          [plugins]="lineChartPlugins">
-      </canvas>      
-      <canvas baseChart 
-          [datasets]="humlineChartData" 
-          [labels]="lineChartLabels" 
-          [options]="lineChartOptions"
-          [colors]="lineChartColors" 
-          [legend]="lineChartLegend" 
-          [chartType]="lineChartType" 
-          [plugins]="lineChartPlugins">
+      <canvas baseChart [datasets]="templineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineTempChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+        [plugins]="lineChartPlugins">
       </canvas>
-      &nbsp;
-      <canvas baseChart 
-          [datasets]="prelineChartData" 
-          [labels]="lineChartLabels" 
-          [options]="lineChartOptions"
-          [colors]="lineChartColors" 
-          [legend]="lineChartLegend" 
-          [chartType]="lineChartType" 
-          [plugins]="lineChartPlugins">
+      <canvas baseChart [datasets]="humlineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineHumChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+        [plugins]="lineChartPlugins">
       </canvas>
+      <canvas baseChart [datasets]="prelineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineatmPreChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+        [plugins]="lineChartPlugins">
+      </canvas>
+    </div>   
+    <div class="weather_station_info">
+      <font size="3"> Last update: {{lastUpdate}} , Creator: Ziogas Panagiotis
+      </font>
     </div>
   </div>
 

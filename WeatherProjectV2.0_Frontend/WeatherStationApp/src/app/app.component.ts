@@ -25,10 +25,22 @@ export class AppComponent implements OnInit {
     responsive: true,
   };
 
-  lineChartColors: Color[] = [
+  lineTempChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgba(103, 176, 235)',
+      backgroundColor: 'rgba(173, 236, 187)',
+    },
+  ];
+  lineHumChartColors: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(185, 233, 245)',
+    },
+  ];
+  lineatmPreChartColors: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(236, 232, 173)',
     },
   ];
 
@@ -36,33 +48,39 @@ export class AppComponent implements OnInit {
   lineChartPlugins = [];
   lineChartType = 'line';
 
+  gaugeType = "semi";     
+  gaugeTempValue;
+  gaugeHumValue;
+  gaugeAtmPressureValue;
+  gaugeTempLabel = "Temperature";
+  gaugeHumLabel ="Humidity";
+  gaugeAtmPressureLabel="Pressure";
+  gaugeTempAppendText = "°C";
+  gaugeHumAppendText="%";
+  gaugeAtmPressureText="mb";
+  lastUpdate:any;
+
   constructor(private apiService: ApiService) { }
   ngOnInit() {
 
-    let filter = {
-      "searchOrder": "DESC",
-      "pageNumber": 0,
-      "pageSize": "1"
-    };
-
-    this.apiService.getWeatherDataByFilter(filter)
-      .subscribe((
-        weatherData) => {
-        console.log(weatherData);
-        let payload = weatherData['payload'];
-        this.weatherDataResult = payload['weatherData'];
-      });
+    let beginOfDate: Date = new Date(); 
+    beginOfDate.setHours(0,0,0,0);
+    let endOfDate: Date = new Date(); 
+    endOfDate.setHours(23,59,59,999);
 
     let filterCharts = {
+      "logDateFrom":beginOfDate,
+      "logDateUntil":endOfDate,
       "searchOrder": "DESC",
       "pageNumber": 0,
-      "pageSize": "24"
+      "pageSize": "144"
     };
 
     let chartTempData = [];
     let chartHumData = [];
     let chartPreData = [];
     let chartDates = [];
+    
 
     this.apiService.getWeatherDataByFilter(filterCharts)
       .subscribe((
@@ -70,14 +88,21 @@ export class AppComponent implements OnInit {
         console.log(weatherData);
         let payloadCharts = weatherData['payload'];
         this.weatherChartsDataResult = payloadCharts['weatherData'];
+        let counter=0;
 
         for (let temp of Object.keys(this.weatherChartsDataResult)) {
           var dataObject = this.weatherChartsDataResult[temp];
-          console.log(dataObject.temperature);
+          if(counter===0){
+            this.lastUpdate = moment(dataObject.logDate).format('YYYY-MM-DD H:mm:s');
+            this.gaugeTempValue = dataObject.temperature;
+            this.gaugeHumValue= dataObject.humidity;
+            this.gaugeAtmPressureValue= dataObject.atmPressure;
+          }
           chartTempData.push(dataObject.temperature);
           chartHumData.push(dataObject.humidity);
           chartPreData.push(dataObject.atmPressure);
           chartDates.push(moment(dataObject.logDate).format('H:m:s'));
+          counter++;
         }
 
       });

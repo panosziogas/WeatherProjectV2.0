@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
+import { NgxGaugeModule } from 'ngx-gauge';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { ChartsModule } from 'ng2-charts';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    NgxGaugeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
